@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap");
+// ------------- MIXINS ------------- //
+@mixin transition($time, $property: all, $easing: ease-in) {
+  transition: $property $time $easing;
+}
+
+// ------------- VARIABLES ------------- //
+$parallax-offset: 30vh;
+$content-offset: 40vh;
+$transition-speed: 1.2s;
+$slide-number: 3;
+$color-primary: #0a306a;
+$text-color: #424547;
+
+html,
+body {
+  overflow: hidden;
+}
+
+.background {
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+  will-change: transform;
+  backface-visibility: hidden;
+  height: 100vh + $parallax-offset;
+  position: fixed;
+  width: 100%;
+  transform: translateY($parallax-offset);
+  @include transition($transition-speed, all, cubic-bezier(0.22, 0.44, 0, 1));
+
+  &:first-child {
+    background-color: #b9b9e7;
+    background-image: url("./../../assets/img/image1-shadow.png");
+    background-position: right 15px bottom calc($parallax-offset / 2);
+    transform: translateY(calc(-1 * $parallax-offset / 2));
+    .content-wrapper {
+      transform: translateY(calc($parallax-offset / 2));
+    }
+  }
+  &:nth-child(2) {
+    background-color: #ffce70;
+    background-image: url("./../../assets/img/image2.png");
+    background-position: left bottom calc($parallax-offset / 2);
+  }
+  &:nth-child(3) {
+    background-color: #ff5166;
+    background-image: url("./../../assets/img/image3.png");
+    background-position: right 15px bottom calc($parallax-offset / 2);
+  }
+  &:nth-child(4) {
+    background-color: rgba(255, 30, 165, 40%);
+    background-image: url("./../../assets/img/image4.png");
+    background-position: left bottom calc($parallax-offset / 2);
+  }
+}
+
+/* Set stacking context of slides */
+@for $i from 1 to ($slide-number + 1) {
+  .background:nth-child(#{$i}) {
+    z-index: ($slide-number + 1) - $i;
+  }
+}
+
+.content {
+  &-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+
+    transform: translateY($content-offset);
+    will-change: transform;
+    backface-visibility: hidden;
+    @include transition(
+      $transition-speed + 0.5,
+      all,
+      cubic-bezier(0.22, 0.44, 0, 1)
+    );
+  }
+  &-title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1.4;
+    color: $color-primary;
+  }
+
+  &-subtitle {
+    font-family: "Nunito", sans-serif;
+    font-size: 24px;
+    color: $text-color;
+    line-height: 1.4;
+    margin-top: 30px;
+  }
+}
+
+// ------------- SET TRANSFORM VALUES ------------- //
+
+.background.up-scroll {
+  transform: translate3d(0, calc(-1 * $parallax-offset / 2), 0);
+  .content-wrapper {
+    transform: translateY(calc($parallax-offset / 2));
+  }
+  + .background {
+    transform: translate3d(0, $parallax-offset, 0);
+    .content-wrapper {
+      transform: translateY($parallax-offset);
+    }
+  }
+}
+
+.background.down-scroll {
+  transform: translate3d(0, -(100vh + $parallax-offset), 0);
+  .content-wrapper {
+    transform: translateY($content-offset);
+  }
+  + .background:not(.down-scroll) {
+    transform: translate3d(0, calc(-1 * $parallax-offset / 2), 0);
+    .content-wrapper {
+      transform: translateY(calc($parallax-offset / 2));
+    }
+  }
+}
+
+/* Layout styles */
+.content-container {
+  max-width: 40%;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
