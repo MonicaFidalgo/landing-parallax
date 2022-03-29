@@ -1,68 +1,142 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap");
-html,
-body {
-  overflow: hidden;
-}
+@media (min-width: 992px) {
+  body {
+    overflow: hidden;
+  }
 
+  .background {
+    background-repeat: no-repeat;
+    overflow: hidden;
+    will-change: transform;
+    backface-visibility: hidden;
+    height: 130vh;
+    position: fixed;
+    width: 100%;
+    transform: translateY(30vh);
+    transition: all 1.2s cubic-bezier(0.22, 0.44, 0, 1);
+  }
+  .background:first-child {
+    background-color: #b9b9e7;
+    background-image: url("./../../assets/img/image1-shadow.png");
+    background-position: right 15px bottom 15vh;
+    transform: translateY(-15vh);
+  }
+  .background:first-child .content-wrapper {
+    transform: translateY(15vh);
+  }
+  .background:nth-child(2) {
+    background-color: #ffce70;
+    background-image: url("./../../assets/img/image2.png");
+    background-position: left bottom 15vh;
+  }
+  .background:nth-child(3) {
+    background-color: #ff5166;
+    background-image: url("./../../assets/img/image3.png");
+    background-position: right 15px bottom 15vh;
+  }
+  .background:nth-child(4) {
+    background-color: rgba(255, 30, 165, 0.4);
+    background-image: url("./../../assets/img/image4.png");
+    background-position: left bottom 15vh;
+  }
+
+  /* Set stacking context of slides */
+  .background:nth-child(1) {
+    z-index: 3;
+  }
+
+  .background:nth-child(2) {
+    z-index: 2;
+  }
+
+  .background:nth-child(3) {
+    z-index: 1;
+  }
+
+  .content-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    transform: translateY(40vh);
+    will-change: transform;
+    backface-visibility: hidden;
+    transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
+  }
+  .content-title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1.4;
+    color: #0a306a;
+  }
+  .content-subtitle {
+    font-family: "Nunito", sans-serif;
+    font-size: 24px;
+    color: #424547;
+    line-height: 1.4;
+    margin-top: 30px;
+  }
+
+  .content-container {
+    max-width: 40%;
+  }
+
+  .background.up-scroll {
+    transform: translate3d(0, -15vh, 0);
+  }
+  .background.up-scroll .content-wrapper {
+    transform: translateY(15vh);
+  }
+  .background.up-scroll + .background {
+    transform: translate3d(0, 30vh, 0);
+  }
+  .background.up-scroll + .background .content-wrapper {
+    transform: translateY(30vh);
+  }
+
+  .background.down-scroll {
+    transform: translate3d(0, -130vh, 0);
+  }
+  .background.down-scroll .content-wrapper {
+    transform: translateY(40vh);
+  }
+  .background.down-scroll + .background:not(.down-scroll) {
+    transform: translate3d(0, -15vh, 0);
+  }
+  .background.down-scroll + .background:not(.down-scroll) .content-wrapper {
+    transform: translateY(15vh);
+  }
+}
 .background {
   background-repeat: no-repeat;
-  overflow: hidden;
-  will-change: transform;
-  backface-visibility: hidden;
-  height: 130vh;
-  position: fixed;
-  width: 100%;
-  transform: translateY(30vh);
-  transition: all 1.2s cubic-bezier(0.22, 0.44, 0, 1);
 }
 .background:first-child {
   background-color: #b9b9e7;
   background-image: url("./../../assets/img/image1-shadow.png");
-  background-position: right 15px bottom 15vh;
-  transform: translateY(-15vh);
-}
-.background:first-child .content-wrapper {
-  transform: translateY(15vh);
+  background-position: right bottom;
 }
 .background:nth-child(2) {
   background-color: #ffce70;
   background-image: url("./../../assets/img/image2.png");
-  background-position: left bottom 15vh;
+  background-position: right bottom;
 }
 .background:nth-child(3) {
   background-color: #ff5166;
   background-image: url("./../../assets/img/image3.png");
-  background-position: right 15px bottom 15vh;
+  background-position: right bottom;
 }
 .background:nth-child(4) {
   background-color: rgba(255, 30, 165, 0.4);
   background-image: url("./../../assets/img/image4.png");
-  background-position: left bottom 15vh;
-}
-
-/* Set stacking context of slides */
-.background:nth-child(1) {
-  z-index: 3;
-}
-
-.background:nth-child(2) {
-  z-index: 2;
-}
-
-.background:nth-child(3) {
-  z-index: 1;
+  background-position: right bottom;
 }
 
 .content-wrapper {
-  height: 100vh;
   display: flex;
   justify-content: center;
   flex-flow: column nowrap;
-  transform: translateY(40vh);
-  will-change: transform;
-  backface-visibility: hidden;
-  transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
 }
 .content-title {
   font-family: "Poppins", sans-serif;
@@ -79,37 +153,13 @@ body {
   margin-top: 30px;
 }
 
-.background.up-scroll {
-  transform: translate3d(0, -15vh, 0);
+@media (max-width: 991px) {
+  .background {
+    min-height: 0;
+    height: 100vh;
+  }
 }
-.background.up-scroll .content-wrapper {
-  transform: translateY(15vh);
-}
-.background.up-scroll + .background {
-  transform: translate3d(0, 30vh, 0);
-}
-.background.up-scroll + .background .content-wrapper {
-  transform: translateY(30vh);
-}
-
-.background.down-scroll {
-  transform: translate3d(0, -130vh, 0);
-}
-.background.down-scroll .content-wrapper {
-  transform: translateY(40vh);
-}
-.background.down-scroll + .background:not(.down-scroll) {
-  transform: translate3d(0, -15vh, 0);
-}
-.background.down-scroll + .background:not(.down-scroll) .content-wrapper {
-  transform: translateY(15vh);
-}
-
 /* Layout styles */
-.content-container {
-  max-width: 40%;
-}
-
 .container {
   width: 100%;
   padding-right: 15px;
