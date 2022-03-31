@@ -13,71 +13,53 @@ $slide-number: 3;
 $color-primary: #0a306a;
 $text-color: #424547;
 
-html,
-body {
-  overflow: hidden;
-}
+$white: #fff;
+$black: #000;
+$gray: #c4c4c4;
+$brand-color: #80ccbe;
+$brand-color-secondary: #007e87;
+$brand-color-tertiary: #427d70;
+$brand-color-quaternary: #29a0b1;
+
+
+
+
+
+
 
 .background {
   background-repeat: no-repeat;
-
-  overflow: hidden;
-  will-change: transform;
-  backface-visibility: hidden;
-  height: 100vh + $parallax-offset;
-  position: fixed;
-  width: 100%;
-  transform: translateY($parallax-offset);
-  @include transition($transition-speed, all, cubic-bezier(0.22, 0.44, 0, 1));
-
+ 
   &:first-child {
     background-color: #b9b9e7;
     background-image: url("./../../assets/img/image1-shadow.png");
-    background-position: right 15px bottom calc($parallax-offset / 2);
-    transform: translateY(calc(-1 * $parallax-offset / 2));
-    .content-wrapper {
-      transform: translateY(calc($parallax-offset / 2));
-    }
+    background-position: right bottom;
   }
+
   &:nth-child(2) {
     background-color: #ffce70;
     background-image: url("./../../assets/img/image2.png");
-    background-position: left bottom calc($parallax-offset / 2);
+    background-position: right bottom;
   }
+
   &:nth-child(3) {
     background-color: #ff5166;
     background-image: url("./../../assets/img/image3.png");
-    background-position: right 15px bottom calc($parallax-offset / 2);
+    background-position: right bottom;
   }
+
   &:nth-child(4) {
     background-color: rgba(255, 30, 165, 40%);
     background-image: url("./../../assets/img/image4.png");
-    background-position: left bottom calc($parallax-offset / 2);
-  }
-}
-
-/* Set stacking context of slides */
-@for $i from 1 to ($slide-number + 1) {
-  .background:nth-child(#{$i}) {
-    z-index: ($slide-number + 1) - $i;
+    background-position: right bottom;
   }
 }
 
 .content {
   &-wrapper {
-    height: 100vh;
     display: flex;
     justify-content: center;
     flex-flow: column nowrap;
-
-    transform: translateY($content-offset);
-    will-change: transform;
-    backface-visibility: hidden;
-    @include transition(
-      $transition-speed + 0.5,
-      all,
-      cubic-bezier(0.22, 0.44, 0, 1)
-    );
   }
   &-title {
     font-family: "Poppins", sans-serif;
@@ -96,38 +78,129 @@ body {
   }
 }
 
-// ------------- SET TRANSFORM VALUES ------------- //
-
-.background.up-scroll {
-  transform: translate3d(0, calc(-1 * $parallax-offset / 2), 0);
-  .content-wrapper {
-    transform: translateY(calc($parallax-offset / 2));
-  }
-  + .background {
-    transform: translate3d(0, $parallax-offset, 0);
-    .content-wrapper {
-      transform: translateY($parallax-offset);
-    }
+@media (max-width: 991px) {
+  .background {
+    min-height: 0;
+    height: 100vh;
   }
 }
 
-.background.down-scroll {
-  transform: translate3d(0, -(100vh + $parallax-offset), 0);
-  .content-wrapper {
-    transform: translateY($content-offset);
+@media (min-width: 992px) {
+  body {
+    overflow: hidden;
   }
-  + .background:not(.down-scroll) {
+  .background {
+    background-repeat: no-repeat;
+  
+    overflow: hidden;
+    will-change: transform;
+    backface-visibility: hidden;
+    height: 100vh + $parallax-offset;
+    position: fixed;
+    width: 100%;
+    transform: translateY($parallax-offset);
+    @include transition($transition-speed, all, cubic-bezier(0.22, 0.44, 0, 1));
+  
+    &:first-child {
+      background-color: #b9b9e7;
+      background-image: url("./../../assets/img/image1-shadow.png");
+      background-position: right 15px bottom calc($parallax-offset / 2);
+      transform: translateY(calc(-1 * $parallax-offset / 2));
+      .content-wrapper {
+        transform: translateY(calc($parallax-offset / 2));
+      }
+    }
+    &:nth-child(2) {
+      background-color: #ffce70;
+      background-image: url("./../../assets/img/image2.png");
+      background-position: left bottom calc($parallax-offset / 2);
+    }
+    &:nth-child(3) {
+      background-color: #ff5166;
+      background-image: url("./../../assets/img/image3.png");
+      background-position: right 15px bottom calc($parallax-offset / 2);
+    }
+    &:nth-child(4) {
+      background-color: rgba(255, 30, 165, 40%);
+      background-image: url("./../../assets/img/image4.png");
+      background-position: left bottom calc($parallax-offset / 2);
+    }
+  }
+  
+  /* Set stacking context of slides */
+  @for $i from 1 to ($slide-number + 1) {
+    .background:nth-child(#{$i}) {
+      z-index: ($slide-number + 1) - $i;
+    }
+  }
+
+  .content {
+    &-wrapper {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      flex-flow: column nowrap;
+  
+      transform: translateY($content-offset);
+      will-change: transform;
+      backface-visibility: hidden;
+      @include transition(
+        $transition-speed + 0.5,
+        all,
+        cubic-bezier(0.22, 0.44, 0, 1)
+      );
+    }
+    &-title {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 1.4;
+      color: $color-primary;
+    }
+  
+    &-subtitle {
+      font-family: "Nunito", sans-serif;
+      font-size: 24px;
+      color: $text-color;
+      line-height: 1.4;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .content-container {
+    max-width: 40%;
+  }
+
+  .background.up-scroll {
     transform: translate3d(0, calc(-1 * $parallax-offset / 2), 0);
     .content-wrapper {
       transform: translateY(calc($parallax-offset / 2));
+    }
+    + .background {
+      transform: translate3d(0, $parallax-offset, 0);
+      .content-wrapper {
+        transform: translateY($parallax-offset);
+      }
+    }
+  }
+  
+  .background.down-scroll {
+    transform: translate3d(0, -(100vh + $parallax-offset), 0);
+    .content-wrapper {
+      transform: translateY($content-offset);
+    }
+    + .background:not(.down-scroll) {
+      transform: translate3d(0, calc(-1 * $parallax-offset / 2), 0);
+      .content-wrapper {
+        transform: translateY(calc($parallax-offset / 2));
+      }
     }
   }
 }
 
 /* Layout styles */
-.content-container {
-  max-width: 40%;
-}
+
 
 .container {
   width: 100%;
@@ -184,4 +257,77 @@ body {
 
 .ml-auto {
   margin-left: auto;
+}
+
+
+/* Buttons */
+$button-color-primary: rgba(255,81,102,70%);
+$button-color-secondary: #F0AF2F;
+$button-border-radius: 7px;
+$button-height:55px;
+
+%button {
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight:500;
+  color: black;
+  display: inline-block;
+  border-radius: $button-border-radius;
+  height: $button-height;
+  line-height: $button-height;
+  padding: 0 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: max-content;
+  box-shadow: 0 6px 13px 2px rgba(0, 0, 0, 0.11);
+
+
+
+  &[disabled],
+  &.inactive,
+  &.disabled {
+    opacity: 60%;
+    pointer-events: none;
+  }
+
+  //for button tag instead of a
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  a {
+    color: black;
+  }
+}
+
+.button-primary {
+  @extend %button;
+  background-color: $button-color-primary;
+  border: 1px solid $button-color-primary;
+  
+
+  &:active {
+    background: darken($button-color-primary, 10%);
+  }
+
+  &:hover:not([disabled]),
+  &[hover] {
+    background-color: #9bd6cb;
+  }
+}
+
+.button-secondary {
+  @extend %button;
+  background-color: $button-color-secondary;
+  border: 1px solid  $button-color-secondary;
+
+  &:active {
+    background: darken( $button-color-secondary, 10%);
+  }
+
+  &:hover:not([disabled]),
+  &[hover] {
+    background-color: #9bd6cb;
+  }
 }
