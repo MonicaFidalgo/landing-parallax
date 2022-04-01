@@ -275,13 +275,13 @@ $button-height:55px;
   border-radius: $button-border-radius;
   height: $button-height;
   line-height: $button-height;
+  text-decoration: none;
   padding: 0 40px;
+  border: 0;
   cursor: pointer;
   transition: all 0.3s ease;
   width: max-content;
   box-shadow: 0 6px 13px 2px rgba(0, 0, 0, 0.11);
-
-
 
   &[disabled],
   &.inactive,
@@ -295,16 +295,11 @@ $button-height:55px;
     outline: none;
     box-shadow: none;
   }
-
-  a {
-    color: black;
-  }
 }
 
 .button-primary {
   @extend %button;
   background-color: $button-color-primary;
-  border: 1px solid $button-color-primary;
   
 
   &:active {
@@ -313,14 +308,13 @@ $button-height:55px;
 
   &:hover:not([disabled]),
   &[hover] {
-    background-color: #9bd6cb;
+    background-color: lighten( $button-color-primary, 10%);
   }
 }
 
 .button-secondary {
   @extend %button;
   background-color: $button-color-secondary;
-  border: 1px solid  $button-color-secondary;
 
   &:active {
     background: darken( $button-color-secondary, 10%);
@@ -328,6 +322,6 @@ $button-height:55px;
 
   &:hover:not([disabled]),
   &[hover] {
-    background-color: #9bd6cb;
+    background-color: lighten( $button-color-secondary, 10%);
   }
 }
