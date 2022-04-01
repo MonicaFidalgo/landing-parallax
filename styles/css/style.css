@@ -1,12 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap");
+/* Basic page style resets */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins";
+  margin: 0;
+}
+
 .background {
   background-repeat: no-repeat;
+  min-height: 0;
 }
 .background:first-child {
   background-color: #b9b9e7;
   background-image: url("./../../assets/img/image1-shadow.png");
-  background-position: right bottom;
 }
 .background:nth-child(2) {
   background-color: #ffce70;
@@ -40,14 +50,61 @@
   font-family: "Nunito", sans-serif;
   font-size: 24px;
   color: #424547;
-  line-height: 1.4;
+  line-height: 1.6;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
+@media (max-width: 576px) {
+  .background {
+    height: 100vh;
+  }
+  .background:first-child {
+    background-size: 500px auto;
+    background-position: left bottom;
+  }
+  .background:nth-child(2) {
+    background-size: 415px auto;
+    background-position: right bottom;
+  }
+  .background:nth-child(3) {
+    background-size: 300px auto;
+    background-position: right bottom;
+  }
+  .background:nth-child(4) {
+    background-size: 300px auto;
+    background-position: right bottom;
+  }
+
+  .content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 10vh;
+  }
+
+  .content-title {
+    font-size: 30px;
+  }
+
+  .content-subtitle {
+    font-size: 16px;
+  }
+}
 @media (max-width: 991px) {
   .background {
-    min-height: 0;
     height: 100vh;
+  }
+  .background:first-child {
+    background-position: left bottom;
+  }
+  .background:nth-child(2) {
+    background-position: right bottom;
+  }
+  .background:nth-child(3) {
+    background-position: right bottom;
+  }
+  .background:nth-child(4) {
+    background-position: left 68px bottom;
   }
 }
 @media (min-width: 992px) {
@@ -115,19 +172,10 @@
     transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
   }
   .content-title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
     font-size: 64px;
-    line-height: 1.4;
-    color: #0a306a;
   }
   .content-subtitle {
-    font-family: "Nunito", sans-serif;
     font-size: 24px;
-    color: #424547;
-    line-height: 1.4;
-    margin-top: 20px;
-    margin-bottom: 30px;
   }
 
   .content-container {
@@ -205,8 +253,6 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
 }
 
 .ml-auto {
