@@ -10,6 +10,10 @@ body {
   margin: 0;
 }
 
+h1, p {
+  margin: 0;
+}
+
 .background {
   background-repeat: no-repeat;
   min-height: 0;
@@ -76,12 +80,6 @@ body {
     background-position: right bottom;
   }
 
-  .content-wrapper {
-    display: flex;
-    align-items: flex-start;
-    padding-top: 10vh;
-  }
-
   .content-title {
     font-size: 30px;
   }
@@ -105,6 +103,12 @@ body {
   }
   .background:nth-child(4) {
     background-position: left 68px bottom;
+  }
+
+  .content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 10vh;
   }
 }
 @media (min-width: 992px) {
