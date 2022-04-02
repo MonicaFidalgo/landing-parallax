@@ -23,17 +23,27 @@ $brand-color-quaternary: #29a0b1;
 
 
 
+/* Basic page style resets */
+* {
+  box-sizing: border-box;
+}
 
+body {
+  font-family: "Poppins";
+  margin: 0;
+}
 
-
+h1, p {
+  margin: 0;
+}
 
 .background {
   background-repeat: no-repeat;
+  min-height: 0;
  
   &:first-child {
     background-color: #b9b9e7;
     background-image: url("./../../assets/img/image1-shadow.png");
-    background-position: right bottom;
   }
 
   &:nth-child(2) {
@@ -73,15 +83,71 @@ $brand-color-quaternary: #29a0b1;
     font-family: "Nunito", sans-serif;
     font-size: 24px;
     color: $text-color;
-    line-height: 1.4;
+    line-height: 1.6;
     margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .background {
+    height: 100vh;
+   
+    &:first-child {
+      background-size: 500px auto;
+      background-position: left bottom;
+    }
+  
+    &:nth-child(2) {
+      background-size: 415px auto;
+      background-position: right bottom;
+    }
+  
+    &:nth-child(3) {
+      background-size: 300px auto;
+      background-position: right bottom;
+    }
+  
+    &:nth-child(4) {
+      background-size: 300px auto;
+      background-position: right bottom;
+    }
+  }
+
+  .content-title {
+    font-size: 30px;
+  }
+
+  .content-subtitle {
+    font-size:16px;
   }
 }
 
 @media (max-width: 991px) {
   .background {
-    min-height: 0;
     height: 100vh;
+   
+    &:first-child {
+      background-position: left bottom;
+    }
+  
+    &:nth-child(2) {
+      background-position: right bottom;
+    }
+  
+    &:nth-child(3) {
+      background-position: right bottom;
+    }
+  
+    &:nth-child(4) {
+      background-position: left 68px bottom;
+    }
+  }
+
+  .content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 10vh;
   }
 }
 
@@ -91,7 +157,6 @@ $brand-color-quaternary: #29a0b1;
   }
   .background {
     background-repeat: no-repeat;
-  
     overflow: hidden;
     will-change: transform;
     backface-visibility: hidden;
@@ -151,20 +216,11 @@ $brand-color-quaternary: #29a0b1;
       );
     }
     &-title {
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
       font-size: 64px;
-      line-height: 1.4;
-      color: $color-primary;
     }
   
     &-subtitle {
-      font-family: "Nunito", sans-serif;
       font-size: 24px;
-      color: $text-color;
-      line-height: 1.4;
-      margin-top: 20px;
-      margin-bottom: 30px;
     }
   }
 
@@ -251,8 +307,6 @@ $brand-color-quaternary: #29a0b1;
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
 }
 
 .ml-auto {
