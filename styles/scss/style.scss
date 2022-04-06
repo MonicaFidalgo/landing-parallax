@@ -9,7 +9,7 @@
 $parallax-offset: 30vh;
 $content-offset: 40vh;
 $transition-speed: 1.2s;
-$slide-number: 3;
+$slide-number: 6;
 $color-primary: #0a306a;
 $text-color: #424547;
 
@@ -168,7 +168,7 @@ h1, p {
   
     &:first-child {
       background-color: #b9b9e7;
-      background-image: url("./../../assets/img/image1-shadow.png");
+      background-image: url("./../../assets/img/image1.png");
       background-position: right 15px bottom calc($parallax-offset / 2);
       transform: translateY(calc(-1 * $parallax-offset / 2));
       .content-wrapper {
@@ -186,9 +186,19 @@ h1, p {
       background-position: right 15px bottom calc($parallax-offset / 2);
     }
     &:nth-child(4) {
-      background-color: rgba(255, 30, 165, 40%);
+      background-color: #ef95cb;
       background-image: url("./../../assets/img/image4.png");
       background-position: left bottom calc($parallax-offset / 2);
+    }
+    &:nth-child(5) {
+      background-color: #7f91f1;
+      background-image: url("./../../assets/img/image5.png");
+      background-position: left bottom calc($parallax-offset / 2);
+    }
+    &:nth-child(6) {
+      background-color: white;
+      background-image: url("./../../assets/img/final.png");
+      background-position: right bottom calc($parallax-offset / 2);
     }
   }
   
