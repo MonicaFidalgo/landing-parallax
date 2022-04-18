@@ -332,4 +332,34 @@ h1, p {
   background-color: #f3c15f;
 }
 
+/*Icons*/
+.content-social {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.icon {
+  display: inline-block;
+  height: 64px;
+  width: 64px;
+  background-repeat: no-repeat;
+}
+
+.icon-facebook {
+  background-image: url("./../../assets/social/facebook.png");
+}
+
+.icon-instagram {
+  background-image: url("./../../assets/social/instagram.png");
+}
+
+.icon-linkedin {
+  background-image: url("./../../assets/social/linkedin.png");
+}
+
+.icon-github {
+  background-image: url("./../../assets/social/github.png");
+}
+
 /*# sourceMappingURL=style.css.map */
